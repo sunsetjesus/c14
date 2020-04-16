@@ -2,14 +2,19 @@
 
 
 <br>
+<br>
 c14 is an OP_RETURN protocol on top of bsv core protocol for creating immutable referncce points of mulitmedia files.
 <br>
+<br>
+
  
 ### The Problem
 <br>
 
 As advancement in Artificial Intelligence continuing at somewhat an exponential rate, we are witnessing a new type of fake content being circulated which is indistinguishable from the real ones to the naked eye. With new breakthroughs in the area of machine learning and artificial intelligence, new tools are being created which in turn creating an influx of deepfake contents. Currently, there are no algorithms or tools that can definitively identify the deepfake videos to maximum accuracy. There must be some kind of framework built in order for our current legal system to deal with such types of issues in the future.
 <br>
+<br>
+
 
 
 ### The Solution
