@@ -1,8 +1,9 @@
 {
   "name": "c14",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "c14 nodejs module",
   "main": "index.js",
+  "repository": "https://github.com/sunsetjesus/c14.git",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
