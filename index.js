@@ -41,7 +41,7 @@ var asm = {
          
             var process = new ffmpeg(path); 
             process.then(function (video) {
-                console.log("file preparation finished")
+                console.log("- Finished file preparation\n")
                 resovle(video)
             }, function (err) {
                 reject('Error: ' + err)
@@ -65,7 +65,7 @@ var asm = {
                             file_name : '__media__%s' 
                         }, function (error, files) {
                             if (!error){
-                                console.log("finished frame extraction")
+                                console.log("- Finished frame extraction\n")
                                 files.map((file,index)=>{
                                     let frame_buffer = fs.readFileSync(file);
                                     let frame_buff_sig = root.key_rsa.sign(frame_buffer,"base64","base64");
@@ -104,7 +104,7 @@ var asm = {
             metadata : JSON.stringify(data.video_obj.metadata)
 
         };
-        console.log("built OP_RETURN payload")
+        console.log("- Built OP_RETURN payload\n")
         let op_return_str = protocol_prefix+" "+Buffer.from(JSON.stringify(obj_temp_0)).toString("base64");
         return(op_return_str)
         
@@ -122,7 +122,7 @@ var asm = {
                     key : root.key_bsv
                 }
             }
-            console.log("Broadcasting Transaction ...\n",tx)
+            console.log("- Broadcasting Transaction ...\n",tx)
             filepay.send(tx,function(err,res){
                 if(err){
                     reject(err)

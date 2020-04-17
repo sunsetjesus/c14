@@ -1,6 +1,6 @@
 {
   "name": "c14",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "c14 nodejs module",
   "main": "index.js",
   "repository": "https://github.com/sunsetjesus/c14.git",
