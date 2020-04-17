@@ -17,7 +17,7 @@ var asm = {
     init : function(opt){
                     let root = this;
                     let t = new Date().getTime();
-                    let built_path = path.join(__dirname,"./build/"+t+"/frame");
+                    let built_path = opt.build_dir || path.join(__dirname,"./build/"+t+"/frame");
         
                     fs.ensureDir(built_path,function(err){
                         if(err){

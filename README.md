@@ -102,7 +102,8 @@ Dillinger is currently extended with the following plugins. Instructions on how 
 const c14 = require("c14") 
 let config = {
     key_rsa : <rsa2048 private key>,
-    key_bsv : <bsv_private_key>
+    key_bsv : <bsv_private_key>,
+    build_dir : <path>
 }
 
 //initialize c14 instance 
