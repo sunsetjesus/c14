@@ -8,29 +8,12 @@ const node_rsa = require("node-rsa");
 const filepay = require('filepay');
 
 
-<<<<<<< HEAD
-=======
-const key = new nodeRSA({b:2048});
->>>>>>> 29a3bd588e14e0a7fd8dd76c1f385f36e65a9f72
-
 const protocol_prefix = "1tTm1SsDovUrtZryEusP1zfPpK5AvnMKM"
 
 
 
 var asm = {
     
-<<<<<<< HEAD
-    
-    init : function(opt ){
-                    let root = this;
-                    let t = new Date().getTime();
-                    let built_path = opt.built_path || path.join(__dirname,`./build/${t}/frame`);
-        
-                    fs.ensureDir(built_path,function(err){
-                        if(err){
-                            console.log(err);
-                            return false;
-=======
     init : function(opt){
                     let root = this;
                     let t = new Date().getTime();
@@ -39,7 +22,6 @@ var asm = {
                     fs.ensureDir(built_path,function(err){
                         if(err){
                             console.log(err)
->>>>>>> 29a3bd588e14e0a7fd8dd76c1f385f36e65a9f72
                         }else{
                             root.build_dir = built_path;
                             root.key_rsa = new node_rsa(opt.key_rsa);
@@ -59,10 +41,6 @@ var asm = {
          
             var process = new ffmpeg(path); 
             process.then(function (video) {
-<<<<<<< HEAD
-                console.log("preparing file finished")
-=======
->>>>>>> 29a3bd588e14e0a7fd8dd76c1f385f36e65a9f72
                 resovle(video)
             }, function (err) {
                 reject('Error: ' + err)
@@ -86,10 +64,6 @@ var asm = {
                             file_name : '__media__%s' 
                         }, function (error, files) {
                             if (!error){
-<<<<<<< HEAD
-                                console.log("frame extraction finished")
-=======
->>>>>>> 29a3bd588e14e0a7fd8dd76c1f385f36e65a9f72
                                 files.map((file,index)=>{
                                     let frame_buffer = fs.readFileSync(file);
                                     let frame_buff_sig = root.key_rsa.sign(frame_buffer,"base64","base64");
@@ -100,10 +74,6 @@ var asm = {
                                 let obj_temp_0 = {
                                     video_obj,frame_buffer_sig_hash
                                 }
-<<<<<<< HEAD
-                                
-=======
->>>>>>> 29a3bd588e14e0a7fd8dd76c1f385f36e65a9f72
                                 resolve(obj_temp_0);
 
                             }else{
@@ -133,10 +103,6 @@ var asm = {
 
         };
         let op_return_str = protocol_prefix+" "+Buffer.from(JSON.stringify(obj_temp_0)).toString("base64");
-<<<<<<< HEAD
-        console.log("built OP_RETURN payload")
-=======
->>>>>>> 29a3bd588e14e0a7fd8dd76c1f385f36e65a9f72
         return(op_return_str)
         
         
@@ -153,11 +119,7 @@ var asm = {
                     key : root.key_bsv
                 }
             }
-<<<<<<< HEAD
-            console.log("Broadcasting Transaction ...")
-=======
             console.log("Broadcasting Transaction ...\n")
->>>>>>> 29a3bd588e14e0a7fd8dd76c1f385f36e65a9f72
             filepay.send(tx,function(err,res){
                 if(err){
                     reject(err)
@@ -173,10 +135,6 @@ var asm = {
     
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 29a3bd588e14e0a7fd8dd76c1f385f36e65a9f72
 module.exports = asm;
 
 
