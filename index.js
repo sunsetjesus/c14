@@ -122,7 +122,7 @@ var asm = {
                     key : root.key_bsv
                 }
             }
-            console.log("Broadcasting Transaction ...\n")
+            console.log("Broadcasting Transaction ...\n",tx)
             filepay.send(tx,function(err,res){
                 if(err){
                     reject(err)
