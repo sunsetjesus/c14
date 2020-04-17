@@ -8,7 +8,6 @@ const node_rsa = require("node-rsa");
 const filepay = require('filepay');
 
 
-const key = new nodeRSA({b:2048});
 
 const protocol_prefix = "1tTm1SsDovUrtZryEusP1zfPpK5AvnMKM"
 
@@ -16,14 +15,16 @@ const protocol_prefix = "1tTm1SsDovUrtZryEusP1zfPpK5AvnMKM"
 
 var asm = {
     
-    init : function(opt){
+    
+    init : function(opt ){
                     let root = this;
                     let t = new Date().getTime();
-                    let built_path = path.join(__dirname,"./build/"+t+"/frame");
+                    let built_path = opt.built_path || path.join(__dirname,`./build/${t}/frame`);
         
                     fs.ensureDir(built_path,function(err){
                         if(err){
-                            console.log(err)
+                            console.log(err);
+                            return false;
                         }else{
                             root.build_dir = built_path;
                             root.key_rsa = new node_rsa(opt.key_rsa);
@@ -43,6 +44,7 @@ var asm = {
          
             var process = new ffmpeg(path); 
             process.then(function (video) {
+                console.log("preparing file finished")
                 resovle(video)
             }, function (err) {
                 reject('Error: ' + err)
@@ -66,6 +68,7 @@ var asm = {
                             file_name : '__media__%s' 
                         }, function (error, files) {
                             if (!error){
+                                console.log("frame extraction finished")
                                 files.map((file,index)=>{
                                     let frame_buffer = fs.readFileSync(file);
                                     let frame_buff_sig = root.key_rsa.sign(frame_buffer,"base64","base64");
@@ -76,6 +79,7 @@ var asm = {
                                 let obj_temp_0 = {
                                     video_obj,frame_buffer_sig_hash
                                 }
+                                
                                 resolve(obj_temp_0);
 
                             }else{
@@ -105,6 +109,7 @@ var asm = {
 
         };
         let op_return_str = protocol_prefix+" "+Buffer.from(JSON.stringify(obj_temp_0)).toString("base64");
+        console.log("built OP_RETURN payload")
         return(op_return_str)
         
         
@@ -121,7 +126,7 @@ var asm = {
                     key : root.key_bsv
                 }
             }
-            console.log("Broadcasting Transaction ...\n")
+            console.log("Broadcasting Transaction ...")
             filepay.send(tx,function(err,res){
                 if(err){
                     reject(err)
@@ -136,6 +141,7 @@ var asm = {
     }
     
 }
+
 
 module.exports = asm;
 
